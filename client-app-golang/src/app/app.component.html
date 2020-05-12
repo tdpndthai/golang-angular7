@@ -1,0 +1,118 @@
+<h3>Product List</h3>
+<table class="table table-bordered table-dark">
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Price</td>
+    <td>Status</td>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{ product.id }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.price }}</td>
+    <td>{{ product.status }}</td>
+  </tr>
+</table>
+
+<h3>Product Search</h3>
+<form>
+  <input
+    type="text"
+    placeholder="Product Id"
+    [(ngModel)]="productId"
+    [ngModelOptions]="{ standalone: true }"
+  />
+  <input type="button" value="Search" (click)="search()" />
+  <table class="table table-bordered table-dark">
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Price</td>
+      <td>Status</td>
+    </tr>
+    <tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.status }}</td>
+    </tr>
+  </table>
+</form>
+
+<h3>Add Product</h3>
+<form [formGroup]="productForm" (ngSubmit)="save()">
+  <table>
+    <tr>
+      <td>Name</td>
+      <td><input type="text" formControlName="name" class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td>
+        <input
+          type="number"
+          min="0"
+          formControlName="price"
+          class="form-control"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Status</td>
+      <td><input type="checkbox" formControlName="status" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="Save" /></td>
+    </tr>
+  </table>
+</form>
+
+<h3>Delete Product</h3>
+<form>
+  <input
+    type="text"
+    placeholder="Product Id"
+    [(ngModel)]="productId"
+    [ngModelOptions]="{ standalone: true }"
+  />
+  <input
+    type="button"
+    class="btn btn-success"
+    value="Delete"
+    (click)="delete()"
+  />
+</form>
+
+<h3>Update Product</h3>
+<form [formGroup]="updateProductForm" (ngSubmit)="update()">
+  <table>
+    <tr>
+      <td>Id</td>
+      <td><input type="text" formControlName="id" class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td><input type="text" formControlName="name" class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td>
+        <input
+          type="number"
+          min="0"
+          formControlName="price"
+          class="form-control"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Status</td>
+      <td><input type="checkbox" formControlName="status" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="Save" /></td>
+    </tr>
+  </table>
+</form>
